@@ -1,10 +1,11 @@
 import { motion } from "motion/react";
 import { Code, Database, Cloud, Smartphone, Brain, Blocks } from "lucide-react";
 import { useInView } from "../hooks/useInView";
-import { profileData, skills, testimonials } from "../data/mockData";
+import { skills, projectOutcomes } from "../data/mockData";
+import { usePageSEO } from "../hooks/usePageSEO";
 import { SkillCategory } from "../types";
 import { AnimatedCounter } from "../components/ui/AnimatedCounter";
-import { TestimonialCarousel } from "../components/about/TestimonialCarousel";
+import { ProjectOutcomesCarousel } from "../components/about/ProjectOutcomesCarousel";
 import { SkillRadar } from "../components/about/SkillRadar";
 import { TerminalSimulator } from "../components/ui/TerminalSimulator";
 
@@ -31,9 +32,16 @@ const categoryColors: Record<SkillCategory, string> = {
 };
 
 export const AboutPage = () => {
-  const [headerRef, headerInView] = useInView({ threshold: 0.3, triggerOnce: true });
-  const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true });
-  const [statsRef, statsInView] = useInView({ threshold: 0.3, triggerOnce: true });
+  usePageSEO({
+    title: "About",
+    description:
+      "Learn about Taki Eddine Rami — full-stack developer with 6+ years of experience building modern web applications.",
+    path: "/about",
+  });
+
+  const [headerRef, headerInView] = useInView<HTMLDivElement>({ threshold: 0.3, triggerOnce: true });
+  const [skillsRef, skillsInView] = useInView<HTMLDivElement>({ threshold: 0.1, triggerOnce: true });
+  const [statsRef, statsInView] = useInView<HTMLDivElement>({ threshold: 0.3, triggerOnce: true });
 
   const skillsByCategory = skills.reduce((acc, skill) => {
     if (!acc[skill.category]) {
@@ -184,7 +192,7 @@ export const AboutPage = () => {
           <SkillRadar />
         </motion.div>
 
-        {/* Testimonials */}
+        {/* Project Outcomes */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -193,11 +201,11 @@ export const AboutPage = () => {
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-12">
             <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-              What People Say
+              Client Results
             </span>
           </h2>
 
-          <TestimonialCarousel testimonials={testimonials} />
+          <ProjectOutcomesCarousel outcomes={projectOutcomes} />
         </motion.div>
 
         {/* Philosophy */}

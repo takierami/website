@@ -70,15 +70,13 @@ export interface GitHubContribution {
   level: 0 | 1 | 2 | 3 | 4;
 }
 
-export interface Testimonial {
+export interface ProjectOutcome {
   id: string;
-  name: string;
-  role: string;
-  company: string;
+  project: string;
+  industry: string;
+  highlight: string;
   content: string;
-  avatar: string;
-  linkedin?: string;
-  rating: number;
+  demo?: string;
 }
 
 export interface ContactFormData {

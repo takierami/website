@@ -1,8 +1,16 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { Home, ArrowLeft } from "lucide-react";
+import { usePageSEO } from "../hooks/usePageSEO";
 
 export const NotFound = () => {
+  usePageSEO({
+    title: "Page Not Found",
+    description: "The page you are looking for does not exist.",
+    path: "/404",
+    noIndex: true,
+  });
+
   return (
     <div className="relative min-h-screen flex items-center justify-center px-4">
       {/* Animated Background */}

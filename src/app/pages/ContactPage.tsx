@@ -2,9 +2,18 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Mail, MapPin, Phone, Send, Check, AlertCircle, MessageCircle, Linkedin, Github, Twitter, Code } from "lucide-react";
 import { profileData, socialLinks } from "../data/mockData";
+import { usePageSEO } from "../hooks/usePageSEO";
+import { siteConfig } from "../config/site";
 import type { ContactFormData } from "../types";
 
 export const ContactPage = () => {
+  usePageSEO({
+    title: "Contact",
+    description:
+      "Get in touch to discuss your website project. Available for freelance and contract work worldwide.",
+    path: "/contact",
+  });
+
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
@@ -16,6 +25,7 @@ export const ContactPage = () => {
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Partial<ContactFormData>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validate = (): boolean => {
     const newErrors: Partial<ContactFormData> = {};
@@ -39,10 +49,20 @@ export const ContactPage = () => {
     if (!validate()) return;
 
     setStatus("loading");
+    setSubmitError(null);
 
     try {
+      const accessKey = import.meta.env.VITE_WEB3FORMS_KEY;
+      if (!accessKey) {
+        setSubmitError("Contact form is not configured. Please try again later or email directly.");
+        setStatus("error");
+        return;
+      }
+
       const formPayload = new FormData(e.target as HTMLFormElement);
-      formPayload.append("access_key", "f01f72d2-d407-4198-ac04-0215c35e9937");
+      formPayload.append("access_key", accessKey);
+      formPayload.append("from_name", formData.name);
+      formPayload.append("replyto", formData.email);
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -61,14 +81,19 @@ export const ContactPage = () => {
           timeline: "",
         });
       } else {
+        setSubmitError(data.message ?? "Failed to send message. Please try again.");
         setStatus("error");
       }
-    } catch (error) {
+    } catch {
+      setSubmitError("Network error. Please check your connection and try again.");
       setStatus("error");
     }
 
     // Reset after 3 seconds
-    setTimeout(() => setStatus("idle"), 3000);
+    setTimeout(() => {
+      setStatus("idle");
+      setSubmitError(null);
+    }, 3000);
   };
 
   const handleChange = (
@@ -381,6 +406,13 @@ export const ContactPage = () => {
                 )}
               </div>
 
+              {submitError && status === "error" && (
+                <p className="mb-4 text-sm text-red-400 flex items-center gap-2" role="alert">
+                  <AlertCircle size={16} className="flex-shrink-0" />
+                  {submitError}
+                </p>
+              )}
+
               <motion.button
                 type="submit"
                 disabled={status === "loading" || status === "success"}
@@ -415,6 +447,18 @@ export const ContactPage = () => {
                   </>
                 )}
               </motion.button>
+
+              <p className="mt-4 text-center text-sm text-white/50">
+                Or{" "}
+                <a
+                  href={siteConfig.calendlyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 transition-colors"
+                >
+                  book a meeting with me one-on-one
+                </a>
+              </p>
             </form>
           </motion.div>
         </div>

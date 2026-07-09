@@ -1,14 +1,25 @@
 import { motion } from "motion/react";
-import { ArrowRight, Download, Linkedin, MessageCircle, Mail, FileText, Terminal } from "lucide-react";
+import { ArrowRight, Linkedin, MessageCircle, Mail, FileText, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ParticleField } from "../components/hero/ParticleField";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { GitHubContributions } from "../components/hero/GitHubContributions";
 import { GlitchText } from "../components/ui/GlitchText";
 import { useTypingEffect } from "../hooks/useTypingEffect";
+import { usePageSEO } from "../hooks/usePageSEO";
 import { profileData } from "../data/mockData";
-import { useState, useEffect } from "react";
+
+const ParticleField = lazy(() =>
+  import("../components/hero/ParticleField").then((m) => ({ default: m.ParticleField }))
+);
 
 export const HomePage = () => {
+  usePageSEO({
+    title: "Home",
+    description:
+      "Full-stack web developer building high-performance websites for businesses worldwide. Custom React, Next.js, and TypeScript solutions.",
+    path: "/",
+  });
+
   const roles = [
     "Web Developer",
     "Full-Stack Engineer",
@@ -30,7 +41,9 @@ export const HomePage = () => {
     <div className="relative min-h-screen overflow-hidden">
       {/* Particle Background */}
       <div className="absolute inset-0 z-0">
-        <ParticleField />
+        <Suspense fallback={null}>
+          <ParticleField />
+        </Suspense>
       </div>
 
       {/* Gradient Orbs */}

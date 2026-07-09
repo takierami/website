@@ -8,12 +8,19 @@ import { motion, AnimatePresence } from "motion/react";
 export const MainLayout = () => {
   return (
     <div className="relative min-h-screen bg-black text-white">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[10000] focus:px-4 focus:py-2 focus:bg-cyan-500 focus:text-black focus:rounded-lg focus:font-mono focus:text-sm"
+      >
+        Skip to main content
+      </a>
       <ScrollProgress />
       <Navigation />
       <BackToTop />
       
       <AnimatePresence mode="wait">
         <motion.main
+          id="main-content"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

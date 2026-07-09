@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ProjectCategory } from "../types";
 import { projects } from "../data/mockData";
+import { usePageSEO } from "../hooks/usePageSEO";
 import { ProjectCard } from "../components/projects/ProjectCard";
 import { ProjectModal } from "../components/projects/ProjectModal";
 import type { Project } from "../types";
@@ -16,6 +17,13 @@ const categories: { id: ProjectCategory; label: string }[] = [
 ];
 
 export const ProjectsPage = () => {
+  usePageSEO({
+    title: "Projects",
+    description:
+      "Portfolio of client websites and web applications — law firms, healthcare, SaaS, HVAC, and more.",
+    path: "/projects",
+  });
+
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 

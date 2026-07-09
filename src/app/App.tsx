@@ -3,21 +3,32 @@ import { router } from "./routes";
 import { CustomCursor } from "./components/cursor/CustomCursor";
 import { useEffect } from "react";
 
+function prefersReducedMotion(): boolean {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function isTouchDevice(): boolean {
+  return window.matchMedia("(pointer: coarse)").matches || "ontouchstart" in window;
+}
+
 export default function App() {
+  const showCustomCursor = !isTouchDevice() && !prefersReducedMotion();
+
   useEffect(() => {
-    // Prevent default cursor on drag
-    document.body.style.cursor = "none";
-    
-    // Performance optimization: reduce motion for users who prefer it
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mediaQuery.matches) {
+    document.body.style.cursor = showCustomCursor ? "none" : "";
+
+    if (prefersReducedMotion()) {
       document.documentElement.style.setProperty("--animation-duration", "0.01ms");
     }
-  }, []);
+
+    return () => {
+      document.body.style.cursor = "";
+    };
+  }, [showCustomCursor]);
 
   return (
     <>
-      <CustomCursor />
+      {showCustomCursor && <CustomCursor />}
       <RouterProvider router={router} />
     </>
   );

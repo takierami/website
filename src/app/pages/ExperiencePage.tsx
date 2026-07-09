@@ -2,8 +2,16 @@ import { motion } from "motion/react";
 import { experiences } from "../data/mockData";
 import { TimelineItem } from "../components/experience/TimelineItem";
 import { Briefcase, GraduationCap, Award } from "lucide-react";
+import { usePageSEO } from "../hooks/usePageSEO";
 
 export const ExperiencePage = () => {
+  usePageSEO({
+    title: "Experience",
+    description:
+      "Professional experience, education, and certifications in full-stack web development.",
+    path: "/experience",
+  });
+
   const workExperience = experiences.filter((e) => e.type === "work");
   const education = experiences.filter((e) => e.type === "education");
   const certifications = experiences.filter((e) => e.type === "certification");
@@ -32,8 +40,7 @@ export const ExperiencePage = () => {
           </h1>
 
           <p className="text-xl text-white/60 max-w-3xl leading-relaxed">
-            6+ years of building impactful products, leading engineering teams, and solving
-            complex technical challenges at scale.
+            6+ years building custom websites for businesses worldwide — from discovery to deployment.
           </p>
         </motion.div>
 

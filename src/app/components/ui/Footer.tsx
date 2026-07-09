@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { Heart, Code, Mail, Phone, MessageCircle, Linkedin } from "lucide-react";
-import { socialLinks, profileData } from "../../data/mockData";
+import { profileData } from "../../data/mockData";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -39,6 +39,7 @@ export const Footer = () => {
                 { path: "/about", label: "About" },
                 { path: "/services", label: "Services" },
                 { path: "/projects", label: "Projects" },
+                { path: "/experience", label: "Experience" },
                 { path: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.path}>
@@ -111,8 +112,11 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-2">
               <span>© {currentYear} Taki Eddine Rami. All rights reserved.</span>
+              <Link to="/privacy" className="hover:text-cyan-400 transition-colors">
+                Privacy Policy
+              </Link>
             </div>
             <div className="flex items-center gap-2">
               <span>Built with</span>

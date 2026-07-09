@@ -1,8 +1,16 @@
 import { motion } from "motion/react";
 import { Code, Palette, Server, Zap, CheckCircle2, ArrowRight, Sparkles, Rocket, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
+import { usePageSEO } from "../hooks/usePageSEO";
 
 export const ServicesPage = () => {
+  usePageSEO({
+    title: "Services & Pricing",
+    description:
+      "Web development services from landing pages to full-stack applications. Transparent pricing starting at $399.",
+    path: "/services",
+  });
+
   const services = [
     {
       icon: Code,

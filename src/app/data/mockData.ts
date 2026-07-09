@@ -3,8 +3,7 @@ import type {
   Experience, 
   Skill, 
   SocialLink, 
-  Testimonial,
-  GitHubContribution 
+  ProjectOutcome 
 } from "../types";
 
 export const profileData = {
@@ -158,104 +157,40 @@ export const projects: Project[] = [
 export const experiences: Experience[] = [
   {
     id: "1",
-    company: "TechCorp Global",
-    role: "Senior Full-Stack Engineer & Tech Lead",
+    company: "Self-Employed",
+    role: "Freelance Web Developer",
     type: "work",
-    period: { start: "2022-03", end: "Present" },
+    period: { start: "2020", end: "Present" },
     location: "Remote",
     description: [
-      "Leading a team of 8 engineers building cloud-native SaaS platform serving 100k+ users",
-      "Architected microservices migration from monolith, reducing deployment time by 75%",
-      "Established engineering best practices, CI/CD pipelines, and observability standards"
+      "Building custom web solutions for small-to-medium businesses, specializing in professional service websites with modern React ecosystems",
+      "Designed and developed 25+ client websites across legal, healthcare, SaaS, and accounting sectors",
+      "Delivered responsive, SEO-optimized sites with 90+ Lighthouse performance scores",
+      "Managed end-to-end client relationships from discovery to deployment"
     ],
     achievements: [
-      "Reduced system latency by 60% through database optimization and caching strategies",
-      "Implemented feature flag system enabling safe progressive rollouts",
-      "Mentored 4 junior engineers to mid-level positions",
-      "Improved deployment frequency from weekly to 20+ times per day"
+      "Sterling & Associates CPA — Modern accounting firm website with service listings, team profiles, and consultation booking",
+      "Lumora SaaS Infrastructure — Landing page for developer tools platform featuring pricing tiers and analytics dashboard",
+      "Premium Law Firm — Professional legal practice site with practice areas, case studies, and attorney profiles",
+      "Family Medicine Platform — Healthcare provider website with patient-focused UX and service information"
     ],
-    technologies: ["React", "Node.js", "PostgreSQL", "Redis", "Kubernetes", "AWS"],
-    logo: "https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=100&q=80",
-    link: "https://techcorp.example.com"
+    technologies: ["React", "Next.js", "Tailwind CSS", "Netlify", "Vercel"]
   },
   {
     id: "2",
-    company: "InnovateLabs",
-    role: "Full-Stack Software Engineer",
-    type: "work",
-    period: { start: "2020-01", end: "2022-02" },
-    location: "San Francisco, CA",
-    description: [
-      "Built customer-facing web applications for Fortune 500 clients",
-      "Developed real-time analytics dashboard processing 1M+ events per second",
-      "Collaborated with design team to implement pixel-perfect, accessible interfaces"
-    ],
-    achievements: [
-      "Architected event-driven architecture using Kafka and Apache Flink",
-      "Achieved 98% test coverage across frontend and backend codebases",
-      "Reduced bundle size by 40% through code-splitting and lazy loading",
-      "Won 'Innovation Award' for ML-powered recommendation engine"
-    ],
-    technologies: ["Vue.js", "Python", "Django", "Kafka", "Elasticsearch", "GCP"],
-    logo: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=100&q=80",
-    link: "https://innovatelabs.example.com"
-  },
-  {
-    id: "3",
-    company: "VentureTech Solutions",
-    role: "Founding Engineer",
-    type: "work",
-    period: { start: "2018-06", end: "2019-12" },
-    location: "New York, NY",
-    description: [
-      "First engineering hire at early-stage startup, built entire tech stack from scratch",
-      "Developed MVP in 3 months, acquiring first 1,000 paying customers",
-      "Owned product development, infrastructure, and security"
-    ],
-    achievements: [
-      "Built scalable architecture supporting 10x user growth in 6 months",
-      "Implemented OAuth 2.0 and SAML for enterprise SSO",
-      "Achieved SOC 2 Type II compliance within first year",
-      "Raised $2M seed round with product as primary differentiator"
-    ],
-    technologies: ["React", "Ruby on Rails", "PostgreSQL", "Heroku", "Stripe"],
-    logo: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=100&q=80"
-  },
-  {
-    id: "4",
-    company: "Massachusetts Institute of Technology",
-    role: "M.S. Computer Science",
-    type: "education",
-    period: { start: "2016-09", end: "2018-05" },
-    location: "Cambridge, MA",
-    description: [
-      "Specialized in Distributed Systems and Machine Learning",
-      "Thesis: 'Optimizing Consensus Algorithms in Byzantine Fault Tolerant Systems'",
-      "GPA: 3.9/4.0"
-    ],
-    achievements: [
-      "Published 2 papers in peer-reviewed conferences (SOSP, NSDI)",
-      "Teaching Assistant for 'Advanced Algorithms' course",
-      "Recipient of Presidential Fellowship"
-    ],
-    technologies: [],
-    logo: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=100&q=80"
-  },
-  {
-    id: "5",
-    company: "University of California, Berkeley",
-    role: "B.S. Electrical Engineering & Computer Science",
+    company: "Echahid Cheikh Cheikh Larbi Tebessi University",
+    role: "Bachelor's degree in Computer Science",
     type: "education",
     period: { start: "2012-08", end: "2016-05" },
-    location: "Berkeley, CA",
+    location: "Tebessa, Algeria",
     description: [
       "Focus on Computer Systems and Software Engineering",
-      "Senior Project: Built autonomous drone navigation system using computer vision",
-      "GPA: 3.85/4.0, Summa Cum Laude"
+      "Senior Project: A highly-customizable web-based client for Azure Bot Services",
+      "GPA: 3.25/4.0"
     ],
     achievements: [
-      "President of ACM student chapter",
-      "Won Best Hack award at CalHacks hackathon 2015",
+      "Built AI-powered log parser for senior project, improving debugging efficiency by 50%",
+      "Won Best Hack award at Algeria & Tunisia AI and Cybersecurity Summit Hackathon 2024",
       "Dean's Honor List all semesters"
     ],
     technologies: [],
@@ -374,84 +309,41 @@ export const socialLinks: SocialLink[] = [
   }
 ];
 
-export const testimonials: Testimonial[] = [
+export const projectOutcomes: ProjectOutcome[] = [
   {
     id: "1",
-    name: "Sarah Johnson",
-    role: "VP of Engineering",
-    company: "TechCorp Global",
-    content: "Taki is one of the most talented engineers I've worked with. His ability to architect scalable systems while maintaining code quality is exceptional. He led our microservices migration and the results exceeded all expectations.",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80",
-    linkedin: "https://linkedin.com/in/sarahjohnson",
-    rating: 5
+    project: "Whitmore & Rhodes",
+    industry: "Legal",
+    highlight: "Premium boutique law firm presence",
+    content:
+      "Delivered an elegant litigation practice website with attorney profiles, practice area exploration, and consultation booking — designed for high-net-worth clientele seeking discretion and authority.",
+    demo: "https://premium-law-firm-website.netlify.app/",
   },
   {
     id: "2",
-    name: "Michael Chen",
-    role: "CTO",
-    company: "InnovateLabs",
-    content: "Taki's technical depth is remarkable. He doesn't just write code—he thinks deeply about system design, performance, and maintainability. His contributions to our real-time analytics platform were game-changing.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80",
-    linkedin: "https://linkedin.com/in/michaelchen",
-    rating: 5
+    project: "FamilyCare Medical Group",
+    industry: "Healthcare",
+    highlight: "4.9/5 patient satisfaction showcase",
+    content:
+      "Built a patient-centric platform with same-day appointment booking, telehealth options, and HIPAA-aware privacy standards for a San Francisco family medicine practice.",
+    demo: "https://next-gen-family-medicine-platform.netlify.app/",
   },
   {
     id: "3",
-    name: "Emily Rodriguez",
-    role: "Product Manager",
-    company: "TechCorp Global",
-    content: "Working with Taki has been a pleasure. He brings a product-minded approach to engineering, always considering the user experience and business impact. His communication skills make complex technical concepts accessible.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80",
-    linkedin: "https://linkedin.com/in/emilyrodriguez",
-    rating: 5
+    project: "Sterling & Associates",
+    industry: "Accounting",
+    highlight: "$2.5B+ assets managed trust signal",
+    content:
+      "Created a professional CPA firm website with 98% client satisfaction metrics, comprehensive service showcases, and consultation scheduling for SMBs and startups.",
+    demo: "https://sterling-associates-omega.vercel.app/",
   },
   {
     id: "4",
-    name: "David Park",
-    role: "Senior Engineer",
-    company: "InnovateLabs",
-    content: "Taki is an incredible mentor. He helped me level up my skills in distributed systems and cloud architecture. His code reviews are thorough and educational, always pointing to best practices and learning resources.",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80",
-    linkedin: "https://linkedin.com/in/davidpark",
-    rating: 5
-  }
+    project: "HVAC Elite",
+    industry: "Home Services",
+    highlight: "5,000+ customers, 4.9★ rating",
+    content:
+      "High-conversion service site with real-time dispatch notifications, smart pricing calculator, and 24/7 emergency booking — built to turn visitors into booked jobs.",
+    demo: "https://hvac-elite-services.netlify.app/",
+  },
 ];
-
-// Mock GitHub contributions for the past year
-export const generateGitHubContributions = (): GitHubContribution[] => {
-  const contributions: GitHubContribution[] = [];
-  const today = new Date();
-  
-  for (let i = 365; i >= 0; i--) {
-    const date = new Date(today);
-    date.setDate(date.getDate() - i);
-    
-    // Generate realistic contribution pattern (more on weekdays, occasional gaps)
-    const isWeekend = date.getDay() === 0 || date.getDay() === 6;
-    const random = Math.random();
-    
-    let count = 0;
-    let level: 0 | 1 | 2 | 3 | 4 = 0;
-    
-    if (random > 0.85) {
-      count = 0;
-      level = 0;
-    } else if (isWeekend) {
-      count = Math.floor(Math.random() * 5);
-      level = count > 3 ? 2 : count > 0 ? 1 : 0;
-    } else {
-      count = Math.floor(Math.random() * 20);
-      level = count > 15 ? 4 : count > 10 ? 3 : count > 5 ? 2 : count > 0 ? 1 : 0;
-    }
-    
-    contributions.push({
-      date: date.toISOString().split('T')[0],
-      count,
-      level
-    });
-  }
-  
-  return contributions;
-};
-
-export const githubContributions = generateGitHubContributions();
